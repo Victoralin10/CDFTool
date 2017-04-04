@@ -5,10 +5,10 @@ How to use?
 4. ./config.py
 
 Download test cases.
-./download.py
+1. ./download.py
 
 Submit a solution
-./submit.py 458A.cpp
+1. ./submit.py 458A.cpp
 
 Show submisions
-./submisions.py
+1. ./submisions.py
