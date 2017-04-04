@@ -10,10 +10,6 @@ from bs4 import BeautifulSoup
 import config
 
 
-session = requests.Session()
-session.headers.clear()
-
-
 def get_tta(cookie):
     ans = 0
     for i in range(0, len(cookie)):
@@ -39,7 +35,18 @@ def get_login_data():
         return json.loads(f.read())
 
 
+def get_session():
+    if os.path.exists(config.SESSION_PATH_FILE):
+        with open(config.SESSION_PATH_FILE) as f:
+            return json.loads(f.read())
+    
+    raise "Session is't open."
+
+
 def login():
+    session = requests.Session()
+    session.headers.clear()
+
     html = BeautifulSoup(session.get(config.URL_LOGIN).text, 'html.parser')
     form = html.find('form', {'id': 'enterForm'})
 
